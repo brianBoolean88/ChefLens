@@ -12,12 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "CNUSD Secure",
+      title: "Chef Lens",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.lightBlueAccent,
+          seedColor: const Color.fromARGB(255, 233, 117, 63),
           brightness: Brightness.dark,
         ),
         fontFamily: "Poppins",

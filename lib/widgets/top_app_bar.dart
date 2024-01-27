@@ -17,11 +17,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: appColorScheme.primaryContainer,
       leading: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Image(image: AssetImage("assets/images/app_icon.png")),
-      ),
+          padding: EdgeInsets.all(8.0),
+          child: Image(image: AssetImage("assets/images/icon.png"))),
       title: Text(
-        "CNUSD Secure",
+        "Chef Lens",
         style: TextStyle(
           color: appColorScheme.onPrimaryContainer,
           fontWeight: FontWeight.bold,

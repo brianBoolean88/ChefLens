@@ -4,7 +4,6 @@ import "../widgets/top_app_bar.dart";
 
 import "../screens/home_page.dart";
 import "../screens/staff_directory_page.dart";
-import "../screens/studentconnect/sc_login_page.dart";
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
@@ -25,7 +24,6 @@ class _RootPageState extends State<RootPage> {
         child: Text("Add Page"),
       ),
     ),
-    StudentConnectLoginPage(),
     Card(
       child: Padding(
         padding: EdgeInsets.all(32.0),
@@ -71,10 +69,6 @@ class _RootPageState extends State<RootPage> {
             BottomNavigationBarItem(
               icon: Icon(Icons.add),
               label: "Add",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.assignment),
-              label: "Grades",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
