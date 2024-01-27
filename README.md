@@ -1,0 +1,2 @@
+# CNUSDSecure
+An educational social media app that brings the entirety of the school life to you, with security at your fingertips. You'll have all the school news, in addition to school-wide forums that are monitored for your help.
