@@ -12,6 +12,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: const Text("hi"));
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Row(
+            children: [Text("ChefLens")],
+          ),
+          ElevatedButton(
+            child: const Text("Search"),
+            onPressed: () => {print("hi")},
+          ),
+        ],
+      ),
+    );
   }
 }
