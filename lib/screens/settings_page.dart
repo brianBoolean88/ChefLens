@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../utilities/global.dart';
 import '../utilities/app_settings.dart';
 import 'package:provider/provider.dart';
+import '../screens/home_page.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -61,17 +62,24 @@ class _SettingsPageState extends State<SettingsPage> {
                 String newUsername = _usernameController.text.trim();
                 if (newUsername.isNotEmpty) {
                   // Update the global username
-                  Provider.of<AppSettings>(context, listen: false).appThemeColor = _selectedColor;
+                  username = newUsername;
+                  Provider.of<AppSettings>(context, listen: false)
+                      .appThemeColor = _selectedColor;
+
                   // Show a success message
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('Settings saved successfully'),
                     ),
                   );
+
+                  HomePage.keyState.currentState?.reload();
+                  Navigator.of(context)
+                      .pop(); // Pop the current route (settings page)
                 } else {
                   // Show an error message for an empty username
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text('Please enter a valid username'),
                       backgroundColor: Colors.red,
                     ),

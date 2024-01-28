@@ -2,8 +2,6 @@ import "dart:io";
 
 import "package:flutter/material.dart";
 import 'package:camera/camera.dart';
-
-import "../widgets/scrollable_news_container.dart";
 import "../screens/take_pic_page.dart";
 
 class AddPage extends StatefulWidget {
@@ -39,8 +37,8 @@ class _AddPageState extends State<AddPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            image == null 
-                ? const Icon(Icons.image) 
+            image == null
+                ? const Icon(Icons.image)
                 : Image.file(File(image!.path)),
             Padding(
               padding: const EdgeInsets.all(24.0),
@@ -48,7 +46,7 @@ class _AddPageState extends State<AddPage> {
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.green,
                 ),
-                onPressed: (){
+                onPressed: () {
                   showCamera();
                 },
                 child: const Text("Take Picture",

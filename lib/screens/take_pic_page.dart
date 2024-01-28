@@ -3,8 +3,6 @@ import "dart:io";
 import "package:flutter/material.dart";
 import 'package:camera/camera.dart';
 
-import "../widgets/scrollable_news_container.dart";
-
 class TakePicturePage extends StatefulWidget {
   final CameraDescription camera;
 
@@ -21,8 +19,7 @@ class _TakePicturePageState extends State<TakePicturePage> {
   @override
   void initState() {
     super.initState();
-    _cameraController =
-        CameraController(widget.camera, ResolutionPreset.max);
+    _cameraController = CameraController(widget.camera, ResolutionPreset.max);
     _initializeCameraControllerFuture = _cameraController.initialize();
   }
 
@@ -42,7 +39,7 @@ class _TakePicturePageState extends State<TakePicturePage> {
       debugPrint('$e');
     }
   }
-  
+
   @override
   void dispose() {
     _cameraController.dispose();

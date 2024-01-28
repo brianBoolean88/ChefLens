@@ -8,15 +8,17 @@ import '../utilities/app_settings.dart';
 import '../utilities/global.dart';
 import '../widgets/recipe_list.dart';
 
-
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
+  static final GlobalKey<_HomePageState> keyState = GlobalKey<_HomePageState>();
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  void reload() {
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,8 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center, // Center the Row horizontally
+                    mainAxisAlignment:
+                        MainAxisAlignment.center, // Center the Row horizontally
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,7 +60,8 @@ class _HomePageState extends State<HomePage> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
-                                color: context.watch<AppSettings>().appThemeColor,
+                                color:
+                                    context.watch<AppSettings>().appThemeColor,
                               ),
                             ),
                           ),
@@ -68,7 +72,6 @@ class _HomePageState extends State<HomePage> {
                   const Padding(
                     padding: EdgeInsets.only(top: 20, bottom: 20),
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -78,7 +81,9 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const NewRecipeScreen()),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const NewRecipeScreen()),
                             );
                           },
                           elevation: 2.0,
@@ -108,15 +113,14 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-
-
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: RawMaterialButton(
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const InfoScreen()),
+                              MaterialPageRoute(
+                                  builder: (context) => const InfoScreen()),
                             );
                           },
                           elevation: 2.0,
@@ -146,16 +150,12 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      
                     ],
                   )
-                  
-                  
                 ],
               ),
             ),
             const Padding(padding: EdgeInsets.all(20)),
-
             const Text(
               "Recent Recipes",
               style: TextStyle(
@@ -164,12 +164,8 @@ class _HomePageState extends State<HomePage> {
                 fontSize: 20,
               ),
             ),
-
             const Padding(padding: EdgeInsets.all(10)),
-
-            
             RecipeList(),
-            
           ],
         ),
       ),

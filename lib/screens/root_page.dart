@@ -4,7 +4,8 @@ import "../widgets/top_app_bar.dart";
 
 import "../screens/home_page.dart";
 import "../screens/add_page.dart";
-import "../screens/staff_directory_page.dart";
+
+import '../screens/search_page.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
@@ -18,7 +19,7 @@ class _RootPageState extends State<RootPage> {
 
   static const List<Widget> screens = <Widget>[
     HomePage(),
-    StaffDirectoryPage(),
+    SearchPage(),
     AddPage(),
     Card(
       child: Padding(

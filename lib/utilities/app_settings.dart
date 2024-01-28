@@ -9,4 +9,8 @@ class AppSettings extends ChangeNotifier {
     _appThemeColor = color;
     notifyListeners();
   }
+
+  void reload() {
+    notifyListeners();
+  }
 }

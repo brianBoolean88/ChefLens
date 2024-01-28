@@ -27,7 +27,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right:10),
+          padding: const EdgeInsets.only(right: 10),
           child: PopupMenuButton<String>(
             onSelected: (value) {
               if (value == 'settings') {
@@ -35,8 +35,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   context,
                   MaterialPageRoute(builder: (context) => SettingsPage()),
                 );
-              }
-              else if (value == 'recipes'){
+              } else if (value == 'recipes') {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => CurrentRecipesPage()),
@@ -55,7 +54,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ],
                   ),
                 ),
-
                 const PopupMenuItem<String>(
                   value: 'recipes',
                   child: Row(
@@ -66,7 +64,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ],
                   ),
                 ),
-
               ];
             },
           ),
