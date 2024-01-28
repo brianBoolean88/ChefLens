@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-
+import './utilities/customscroll.dart';
 import "screens/root_page.dart";
 
 void main() {
@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Chef Lens",
       debugShowCheckedModeBanner: false,
+      scrollBehavior: MyCustomScrollBehavior(),
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
