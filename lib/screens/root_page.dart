@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "../widgets/top_app_bar.dart";
 
 import "../screens/home_page.dart";
+import "../screens/add_page.dart";
 import "../screens/staff_directory_page.dart";
 
 class RootPage extends StatefulWidget {
@@ -18,12 +19,7 @@ class _RootPageState extends State<RootPage> {
   static const List<Widget> screens = <Widget>[
     HomePage(),
     StaffDirectoryPage(),
-    Card(
-      child: Padding(
-        padding: EdgeInsets.all(32.0),
-        child: Text("Add Page"),
-      ),
-    ),
+    AddPage(),
     Card(
       child: Padding(
         padding: EdgeInsets.all(32.0),
