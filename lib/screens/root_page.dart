@@ -63,7 +63,7 @@ class _RootPageState extends State<RootPage> {
               label: "Search",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.add),
+              icon: Icon(Icons.add_a_photo),
               label: "Add",
             ),
             BottomNavigationBarItem(
