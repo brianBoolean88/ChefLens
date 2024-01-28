@@ -15,25 +15,19 @@ class RecipeList extends StatefulWidget {
 class _RecipeListState extends State<RecipeList> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       height: 300,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            ...getRecentRecipes().map(
-              (recipe) => ImageButton(
-                imageName: recipe[0], // Assuming the first element is the image name
-                title: recipe[1], // Assuming the second element is the title
-              ),
-            ),
-            const ImageButton(imageName: "assets/images/icon.png", title: "New Test 1"),
-            const ImageButton(imageName: "assets/images/icon.png", title: "New Test 2"),
-            const ImageButton(imageName: "assets/images/icon.png", title: "New Test 3"),
-            const ImageButton(imageName: "assets/images/icon.png", title: "New Test 4"),
-            const ImageButton(imageName: "assets/images/icon.png", title: "New Test 5"),
-            const ImageButton(imageName: "assets/images/icon.png", title: "New Test 6"),
-            const ImageButton(imageName: "assets/images/icon.png", title: "New Test 7"),
+            ImageButton(imageName: "assets/images/icon.png", title: "New Test 1"),
+            ImageButton(imageName: "assets/images/icon.png", title: "New Test 2"),
+            ImageButton(imageName: "assets/images/icon.png", title: "New Test 3"),
+            ImageButton(imageName: "assets/images/icon.png", title: "New Test 4"),
+            ImageButton(imageName: "assets/images/icon.png", title: "New Test 5"),
+            ImageButton(imageName: "assets/images/icon.png", title: "New Test 6"),
+            ImageButton(imageName: "assets/images/icon.png", title: "New Test 7"),
           ],
         ),
       ),
