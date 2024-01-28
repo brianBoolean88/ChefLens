@@ -49,9 +49,23 @@ class _TakePicturePageState extends State<TakePicturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.camera),
-          onPressed: () => _takePicture(context)),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0), 
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            FloatingActionButton(
+                child: const Icon(Icons.close),
+                onPressed: () => Navigator.pop(context)
+            ),
+            FloatingActionButton(
+                child: const Icon(Icons.camera),
+                onPressed: () => _takePicture(context)
+            ),
+          ],
+        ),
+      ),
       body: FutureBuilder(
         future: _initializeCameraControllerFuture,
         builder: (context, snapshot) {
