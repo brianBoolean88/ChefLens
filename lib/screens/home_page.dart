@@ -1,15 +1,23 @@
 import "package:flutter/material.dart";
+import 'package:provider/provider.dart';
 import '../utilities/global.dart' as globals;
 import '../widgets/clickable_image.dart';
+import './new_recipe_screen.dart';
+import './info_screen.dart';
+import '../utilities/app_settings.dart';
+import '../utilities/global.dart';
+import '../widgets/recipe_list.dart';
+
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -19,16 +27,17 @@ class _HomePageState extends State<HomePage> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Color.fromARGB(107, 71, 71, 71),
+                color: const Color.fromARGB(107, 71, 71, 71),
                 borderRadius: BorderRadius.circular(11.0),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center, // Center the Row horizontally
                     children: [
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           const Padding(
                             padding: EdgeInsets.all(5),
@@ -45,10 +54,10 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.only(left: 5),
                             child: Text(
                               globals.username,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
-                                color: Color.fromRGBO(255, 176, 85, 1),
+                                color: context.watch<AppSettings>().appThemeColor,
                               ),
                             ),
                           ),
@@ -59,59 +68,108 @@ class _HomePageState extends State<HomePage> {
                   const Padding(
                     padding: EdgeInsets.only(top: 20, bottom: 20),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RawMaterialButton(
-                      onPressed: () => print("hi"),
-                      elevation: 2.0,
-                      fillColor: const Color.fromARGB(255, 233, 117, 63),
-                      shape: const CircleBorder(),
-                      child: const Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.auto_awesome_outlined,
-                              color: Colors.white,
-                              size: 30.0,
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: RawMaterialButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const NewRecipeScreen()),
+                            );
+                          },
+                          elevation: 2.0,
+                          fillColor: context.watch<AppSettings>().appThemeColor,
+                          shape: const CircleBorder(),
+                          child: const Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.auto_awesome_outlined,
+                                  color: Colors.white,
+                                  size: 30.0,
+                                ),
+                                SizedBox(height: 5.0),
+                                Text(
+                                  "New Recipe",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 5.0),
-                            Text(
-                              "New Recipe",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+
+
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: RawMaterialButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const InfoScreen()),
+                            );
+                          },
+                          elevation: 2.0,
+                          fillColor: context.watch<AppSettings>().appThemeColor,
+                          shape: const CircleBorder(),
+                          child: const Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.info_outline,
+                                  color: Colors.white,
+                                  size: 30.0,
+                                ),
+                                SizedBox(height: 5.0),
+                                Text(
+                                  "Info",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      
+                    ],
+                  )
+                  
+                  
                 ],
               ),
             ),
             const Padding(padding: EdgeInsets.all(20)),
-            const SizedBox(
-              height: 300,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    ImageButton(imageName: "assets/images/icon.png", title: "New Test 1"),
-                    ImageButton(imageName: "assets/images/icon.png", title: "New Test 2"),
-                    ImageButton(imageName: "assets/images/icon.png", title: "New Test 3"),
-                    ImageButton(imageName: "assets/images/icon.png", title: "New Test 4"),
-                    ImageButton(imageName: "assets/images/icon.png", title: "New Test 5"),
-                    ImageButton(imageName: "assets/images/icon.png", title: "New Test 6"),
-                    ImageButton(imageName: "assets/images/icon.png", title: "New Test 7"),
-                    // Add more image buttons as needed
-                  ],
-                ),
+
+            const Text(
+              "Recent Recipes",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
             ),
+
+            const Padding(padding: EdgeInsets.all(10)),
+
+            
+            RecipeList(),
+            
           ],
         ),
       ),

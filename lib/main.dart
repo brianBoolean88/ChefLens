@@ -1,13 +1,20 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 import './utilities/customscroll.dart';
-import "screens/root_page.dart";
+import 'screens/root_page.dart';
+import './utilities/app_settings.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AppSettings(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 233, 117, 63),
+          seedColor: context.watch<AppSettings>().appThemeColor,
           brightness: Brightness.dark,
         ),
         fontFamily: "Poppins",

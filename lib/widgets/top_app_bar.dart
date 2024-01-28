@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../screens/settings_page.dart';
+import '../screens/current_recipes_page.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({super.key});
@@ -28,8 +30,18 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           padding: const EdgeInsets.only(right:10),
           child: PopupMenuButton<String>(
             onSelected: (value) {
-              // Handle the selected menu item
-              // You can perform different actions based on the value
+              if (value == 'settings') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
+              }
+              else if (value == 'recipes'){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CurrentRecipesPage()),
+                );
+              }
             },
             itemBuilder: (BuildContext context) {
               return [
@@ -51,17 +63,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                       Icon(Icons.insert_chart_sharp),
                       SizedBox(width: 8.0),
                       Text('Recipes'),
-                    ],
-                  ),
-                ),
-
-                const PopupMenuItem<String>(
-                  value: 'info',
-                  child: Row(
-                    children: [
-                      Icon(Icons.info_outline),
-                      SizedBox(width: 8.0),
-                      Text('Info'),
                     ],
                   ),
                 ),

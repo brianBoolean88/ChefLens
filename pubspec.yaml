@@ -48,6 +48,7 @@ dependencies:
   path: ^1.8.3
   camera_windows: ^0.2.1+9
   flutter_launcher_icons: ^0.13.1
+  provider: ^6.1.1
 
 dev_dependencies:
   flutter_test:
