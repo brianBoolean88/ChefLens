@@ -6,6 +6,7 @@ import "../screens/home_page.dart";
 import "../screens/add_page.dart";
 
 import '../screens/search_page.dart';
+import '../screens/profile_page.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
@@ -21,12 +22,7 @@ class _RootPageState extends State<RootPage> {
     HomePage(),
     SearchPage(),
     AddPage(),
-    Card(
-      child: Padding(
-        padding: EdgeInsets.all(32.0),
-        child: Text("Profile Page"),
-      ),
-    ),
+    ProfilePage(),
   ];
 
   @override

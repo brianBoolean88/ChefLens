@@ -12,6 +12,7 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   late TextEditingController _usernameController;
   Color _selectedColor = Colors.blue; // Default color
+  IconData _selectedIcon = Icons.account_circle; // Default icon
 
   @override
   void initState() {
@@ -56,15 +57,34 @@ class _SettingsPageState extends State<SettingsPage> {
               ],
             ),
             SizedBox(height: 16),
+            Text(
+              'Choose Profile Icon:',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                _buildIconButton(Icons.account_circle),
+                _buildIconButton(Icons.supervised_user_circle),
+                _buildIconButton(Icons.support_agent_sharp),
+                _buildIconButton(Icons.surfing),
+                _buildIconButton(Icons.support_sharp),
+                _buildIconButton(Icons.tag_faces_outlined),
+                _buildIconButton(Icons.tornado_rounded),
+              ],
+            ),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 // Save the changes
                 String newUsername = _usernameController.text.trim();
                 if (newUsername.isNotEmpty) {
-                  // Update the global username
+                  // Update the global username, theme color, and selected icon
                   username = newUsername;
                   Provider.of<AppSettings>(context, listen: false)
                       .appThemeColor = _selectedColor;
+
+                  selectedIcon = _selectedIcon;
 
                   // Show a success message
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -113,6 +133,31 @@ class _SettingsPageState extends State<SettingsPage> {
             width: 2,
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildIconButton(IconData icon) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedIcon = icon;
+        });
+      },
+      child: Container(
+        width: 50,
+        height: 50,
+        margin: EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: _selectedIcon == icon
+                ? context.watch<AppSettings>().appThemeColor
+                : Colors.transparent,
+            width: 2,
+          ),
+        ),
+        child: Icon(icon,
+            size: 30, color: context.watch<AppSettings>().appThemeColor),
       ),
     );
   }

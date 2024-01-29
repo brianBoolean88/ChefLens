@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const Padding(padding: EdgeInsets.all(20)),
             const Text(
-              "Recent Recipes",
+              "Recommended Recipes",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
