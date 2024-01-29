@@ -31,7 +31,7 @@ class InfoScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Image.asset(
-                'assets/images/icon.png', // Replace with the actual image path
+                'assets/images/icon.png',
                 height: 100,
                 width: 100,
                 fit: BoxFit.contain,

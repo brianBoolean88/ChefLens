@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utilities/global.dart';
 import '../screens/notification_page.dart';
-import '../screens/home_page.dart';
 
 class NewRecipeScreen extends StatefulWidget {
   const NewRecipeScreen({Key? key}) : super(key: key);
@@ -86,23 +85,16 @@ class _NewRecipeScreenState extends State<NewRecipeScreen> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Check if all fields have text before saving
                 if (_recipeNameController.text.isNotEmpty &&
                     _recipeDescriptionController.text.isNotEmpty &&
                     ingredientList.isNotEmpty) {
-                  // Save the recipe with the entered data
                   final recipeName = _recipeNameController.text;
                   final recipeDescription = _recipeDescriptionController.text;
 
-                  // Combine all recipe information into a list
                   List<String> recipeInfo = [recipeName, recipeDescription, ...ingredientList];
-
-                  // Save the recipe to the global list
                   
                   userRecipes.add(recipeInfo);
-                  print("printing user recipes");
-                  print(userRecipes);
-                  // Navigate to the NotificationPage
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -113,7 +105,6 @@ class _NewRecipeScreenState extends State<NewRecipeScreen> {
                     ),
                   );
                 } else {
-                  // Show an error message or handle accordingly
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(

@@ -33,12 +33,12 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               if (value == 'settings') {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                  MaterialPageRoute(builder: (context) => const SettingsPage()),
                 );
               } else if (value == 'recipes') {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CurrentRecipesPage()),
+                  MaterialPageRoute(builder: (context) => const CurrentRecipesPage()),
                 );
               }
             },

@@ -7,26 +7,19 @@ class CurrentRecipesPage extends StatelessWidget {
   const CurrentRecipesPage({super.key});
 
   void _removeRecipe(BuildContext context, int index) {
-    // Assuming userRecipes is a global List<List<String>> containing the recipes
     if (index >= 0 && index < userRecipes.length) {
-      // Remove the recipe from the global list
       userRecipes.removeAt(index);
 
-      // Show a snackbar to indicate successful removal
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Recipe removed successfully'),
         ),
       );
 
-      Provider.of<AppSettings>(context, listen: false)
-          .reload(); // Replace with your appropriate reload method
-
-      // You may also navigate to another screen or perform any other actions as needed
+      Provider.of<AppSettings>(context, listen: false).reload();
     } else {
-      // Handle the case when the index is out of bounds
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Invalid index for recipe removal'),
         ),
       );
@@ -53,7 +46,6 @@ class CurrentRecipesPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   List<String> recipeInfo = userRecipes[index];
 
-                  // Assuming the recipe info format is [name, description, ingredient1, ingredient2, ...]
                   String recipeName = recipeInfo[0];
                   String recipeDescription = recipeInfo[1];
                   List<String> ingredients = recipeInfo.sublist(2);
@@ -75,10 +67,10 @@ class CurrentRecipesPage extends StatelessWidget {
                         ],
                       ),
                       trailing: IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                         onPressed: () {
-                          // Call the remove function when the remove button is clicked
                           _removeRecipe(context, index);
+                          Navigator.pop(context);
                         },
                       ),
                     ),

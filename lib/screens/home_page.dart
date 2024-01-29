@@ -1,15 +1,14 @@
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
 import '../utilities/global.dart' as globals;
-import '../widgets/clickable_image.dart';
 import './new_recipe_screen.dart';
 import './info_screen.dart';
 import '../utilities/app_settings.dart';
-import '../utilities/global.dart';
 import '../widgets/recipe_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
+  // ignore: library_private_types_in_public_api
   static final GlobalKey<_HomePageState> keyState = GlobalKey<_HomePageState>();
   @override
   State<HomePage> createState() => _HomePageState();
@@ -37,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Row(
                     mainAxisAlignment:
-                        MainAxisAlignment.center, // Center the Row horizontally
+                        MainAxisAlignment.center,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -165,7 +164,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const Padding(padding: EdgeInsets.all(10)),
-            RecipeList(),
+            const RecipeList(),
           ],
         ),
       ),

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
-
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatelessWidget {
@@ -13,7 +11,6 @@ class NotificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        // Use popUntil to go back two screens
         Navigator.popUntil(context, ModalRoute.withName('/'));
         return true;
       },

@@ -5,7 +5,10 @@ import 'package:provider/provider.dart';
 import '../screens/home_page.dart';
 
 class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SettingsPageState createState() => _SettingsPageState();
 }
 
@@ -24,29 +27,29 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: const Text('Settings'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Change Username:',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             TextFormField(
               controller: _usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Enter new username',
               ),
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Change App Theme Color:',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               children: [
                 _buildColorButton(Colors.blue),
@@ -56,12 +59,12 @@ class _SettingsPageState extends State<SettingsPage> {
                 _buildColorButton(Colors.red),
               ],
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Choose Profile Icon:',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               children: [
                 _buildIconButton(Icons.account_circle),
@@ -73,31 +76,26 @@ class _SettingsPageState extends State<SettingsPage> {
                 _buildIconButton(Icons.tornado_rounded),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Save the changes
                 String newUsername = _usernameController.text.trim();
                 if (newUsername.isNotEmpty) {
-                  // Update the global username, theme color, and selected icon
                   username = newUsername;
                   Provider.of<AppSettings>(context, listen: false)
                       .appThemeColor = _selectedColor;
 
                   selectedIcon = _selectedIcon;
-
-                  // Show a success message
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text('Settings saved successfully'),
                     ),
                   );
 
                   HomePage.keyState.currentState?.reload();
                   Navigator.of(context)
-                      .pop(); // Pop the current route (settings page)
+                      .pop();
                 } else {
-                  // Show an error message for an empty username
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Please enter a valid username'),
@@ -106,7 +104,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   );
                 }
               },
-              child: Text('Save Settings'),
+              child: const Text('Save Settings'),
             ),
           ],
         ),
@@ -124,7 +122,7 @@ class _SettingsPageState extends State<SettingsPage> {
       child: Container(
         width: 40,
         height: 40,
-        margin: EdgeInsets.all(8),
+        margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: color,
           shape: BoxShape.circle,
@@ -147,7 +145,7 @@ class _SettingsPageState extends State<SettingsPage> {
       child: Container(
         width: 50,
         height: 50,
-        margin: EdgeInsets.all(8),
+        margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           border: Border.all(
             color: _selectedIcon == icon

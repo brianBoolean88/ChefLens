@@ -2,7 +2,6 @@ import 'package:chef_lens/utilities/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../screens/recipe_details.dart';
-import 'package:flutter/material.dart';
 
 class ImageButton extends StatelessWidget {
   final String imageName;
@@ -22,10 +21,6 @@ class ImageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Handle button click
-        print("Image button clicked: $title");
-
-        // Navigate to RecipeDetailsPage with the relevant information
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -82,7 +77,6 @@ class ImageButton extends StatelessWidget {
             const SizedBox(height: 5),
             ElevatedButton(
               onPressed: () {
-                // Navigate to RecipeDetailsPage with the relevant information
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -96,8 +90,7 @@ class ImageButton extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                primary:
-                    context.watch<AppSettings>().appThemeColor.withOpacity(0),
+                backgroundColor: context.watch<AppSettings>().appThemeColor.withOpacity(0),
               ),
               child: const Padding(
                 padding: EdgeInsets.all(8.0),

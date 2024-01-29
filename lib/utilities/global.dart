@@ -8,4 +8,4 @@ List<List<String>> userRecipes = [];
 IconData selectedIcon = Icons.account_circle;
 
 
-//To-Do: Save all of these global variables & also save the appThemeColor from app_settings
+//To-Do: Save all of these global variables & also save the appThemeColor from app_settings to firebase

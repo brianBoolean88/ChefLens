@@ -1,10 +1,7 @@
 import "package:flutter/material.dart";
-
 import "../widgets/top_app_bar.dart";
-
 import "../screens/home_page.dart";
 import "../screens/add_page.dart";
-
 import '../screens/search_page.dart';
 import '../screens/profile_page.dart';
 

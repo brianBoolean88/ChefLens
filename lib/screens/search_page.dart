@@ -8,11 +8,12 @@ class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _SearchPageState createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   List<Map<String, dynamic>> _searchResults = [];
   bool _isLoading = false;
 
@@ -29,18 +30,21 @@ class _SearchPageState extends State<SearchPage> {
         if (response.statusCode == 200) {
           final Map<String, dynamic> data = json.decode(response.body);
           List<dynamic> meals = data['meals'];
+          // ignore: unnecessary_null_comparison
           if (meals != null) {
             setState(() {
               _searchResults = List<Map<String, dynamic>>.from(meals);
             });
           }
         } else {
+          // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('Internet issues....'),
             backgroundColor: Colors.red,
           ));
         }
       } catch (e) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Nothing found...'),
@@ -103,8 +107,8 @@ class _SearchPageState extends State<SearchPage> {
   Widget _buildSearchResults() {
     return Expanded(
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, // You can adjust the number of columns as needed
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
           crossAxisSpacing: 8.0,
           mainAxisSpacing: 8.0,
         ),
