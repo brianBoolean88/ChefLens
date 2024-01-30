@@ -3,6 +3,7 @@ import '../utilities/global.dart';
 import '../utilities/app_settings.dart';
 import 'package:provider/provider.dart';
 import '../screens/home_page.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -78,7 +79,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 String newUsername = _usernameController.text.trim();
                 if (newUsername.isNotEmpty) {
                   username = newUsername;
@@ -95,6 +96,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   HomePage.keyState.currentState?.reload();
                   Navigator.of(context)
                       .pop();
+
+                  //DATA SET
+                  DatabaseReference ref = FirebaseDatabase.instance.ref("users/123");
+                  await ref.update({
+                    "username": username,
+                    "appThemeColor": _selectedColor,
+                    "profileIcon": _selectedIcon,
+                  });
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(

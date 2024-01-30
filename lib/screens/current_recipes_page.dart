@@ -2,11 +2,12 @@ import 'package:chef_lens/utilities/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../utilities/global.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class CurrentRecipesPage extends StatelessWidget {
   const CurrentRecipesPage({super.key});
 
-  void _removeRecipe(BuildContext context, int index) {
+  void _removeRecipe(BuildContext context, int index) async {
     if (index >= 0 && index < userRecipes.length) {
       userRecipes.removeAt(index);
 
@@ -17,6 +18,13 @@ class CurrentRecipesPage extends StatelessWidget {
       );
 
       Provider.of<AppSettings>(context, listen: false).reload();
+
+      //DATA SET
+      DatabaseReference ref = FirebaseDatabase.instance.ref("users/123");
+      await ref.update({
+        "userRecipes": userRecipes,
+      });
+
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

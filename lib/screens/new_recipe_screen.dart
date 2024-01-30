@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utilities/global.dart';
 import '../screens/notification_page.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class NewRecipeScreen extends StatefulWidget {
   const NewRecipeScreen({Key? key}) : super(key: key);
@@ -73,6 +74,7 @@ class _NewRecipeScreenState extends State<NewRecipeScreen> {
                       final ingredient = _ingredientController.text.trim();
                       if (ingredient.isNotEmpty) {
                         ingredientList.add(ingredient);
+
                         _ingredientController.clear();
                       }
                     });
@@ -84,7 +86,7 @@ class _NewRecipeScreenState extends State<NewRecipeScreen> {
             Text("Ingredients: ${ingredientList.join(', ')}"),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 if (_recipeNameController.text.isNotEmpty &&
                     _recipeDescriptionController.text.isNotEmpty &&
                     ingredientList.isNotEmpty) {
@@ -104,6 +106,13 @@ class _NewRecipeScreenState extends State<NewRecipeScreen> {
                       ),
                     ),
                   );
+
+                  //DATA SET
+                  DatabaseReference ref = FirebaseDatabase.instance.ref("users/123");
+                  await ref.update({
+                    "userRecipes": ingredientList,
+                  });
+                  
                 } else {
                   showDialog(
                     context: context,

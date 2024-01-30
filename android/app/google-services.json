@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "582112287063",
+    "project_id": "cheflens-flutterapp",
+    "storage_bucket": "cheflens-flutterapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582112287063:android:eaa6784a8ca0703d874612",
+        "android_client_info": {
+          "package_name": "com.example.cheflens"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoqHsO1Sn6q52bSGRGmx6183IsEwpBmqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,11 +3,28 @@ import './utilities/customscroll.dart';
 import 'screens/root_page.dart';
 import './utilities/app_settings.dart';
 import 'package:provider/provider.dart';
+import './utilities/global.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    // Replace with actual values
+    options: const FirebaseOptions(
+      apiKey: "XXX",
+      appId: "XXX",
+      messagingSenderId: "XXX",
+      projectId: "XXX",
+    ),
+  );
+  initializeGlobals();
+
+  AppSettings userSettings = AppSettings();
+  userSettings.initializeColorGlobal();
+
   runApp(
     ChangeNotifierProvider(
-      create: (context) => AppSettings(),
+      create: (context) => userSettings,
       child: const MyApp(),
     ),
   );
