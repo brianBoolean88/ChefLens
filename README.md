@@ -117,7 +117,7 @@ Our team brings a diverse blend of **technical, business, and communication skil
 
 ---
 
-## 🏆 Awards & Recognition
+## 🏆 Team Awards & Recognition
 
 - 🥇 1st and 2nd place – **Congressional App Challenge**
 - 🥉 3rd place (2x) – **IgniteCS Programming Expo**
